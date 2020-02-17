@@ -1,5 +1,6 @@
 package com.onejane.datautil;
 
+import com.onejane.export.ExportCSVUtil;
 import com.onejane.export.ExportExcelUtil;
 import com.onejane.head.TheadColumn;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
@@ -30,15 +31,18 @@ public class ExportExcelTest {
 
 
         OutputStream outExcel= null;
+        OutputStream outCSV= null;
         try {
             outExcel = new FileOutputStream("F:\\project\\datautil\\src\\main\\resources\\天气数据.xlsx");
+            outCSV = new FileOutputStream("F:\\project\\datautil\\src\\main\\resources\\天气数据.csv");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
         //导出Excel
         ExportExcelUtil.exportExcel(outExcel,"天气数据" ,theadColumnList ,dataList);
-
+        //导出CSV(设置的表头样式失效)
+        ExportCSVUtil.exportCSV(outCSV,theadColumnList ,dataList);
 
     }
 
